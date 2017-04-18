@@ -18,7 +18,6 @@ class CategoryController extends Controller
         $categories = DB::table('categories')->get();
         return view('categorylist', ['categories' => $categories]);
     }
-    protected $redirectTo = '/home';
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoryupdate');
     }
 
     /**
@@ -63,8 +62,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('categoryupdate',['category' => $category]);
-
+        return view('categoryupdate')->with(['category' => $category]);
     }
 
     /**

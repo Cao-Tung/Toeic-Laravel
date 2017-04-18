@@ -23,9 +23,7 @@ Route::post('post', 'PostController@store');
 
 Route::get('category', 'CategoryController@index');
 
-Route::get('create_category', function () {
-    return view('categorynew');
-});
+Route::get('create_category', 'CategoryController@create');
 
 Route::post('new_category', 'CategoryController@store');
 
@@ -34,3 +32,9 @@ Route::get('edit_category/{id}', 'CategoryController@edit');
 Route::post('update_category/{id}', 'CategoryController@update');
 
 Route::get('delete_category/{id}', 'CategoryController@destroy');
+
+Route::get('create_post', function () {
+    return view('postnew');
+});
+
+Route::get('new_post', 'PostController@store');
