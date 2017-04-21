@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 use App\File;
-use Illuminate\Support\Facades\DB;
-class PostController extends Controller
+use Illuminate\Support\Facades\Storage;
+
+class FileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $posts = Post::where('category_id', $id)->get();
-        return view('postlist', ['posts' => $posts], ['id' => $id]);
+        //
     }
 
     /**
@@ -24,9 +23,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        return view('postnew', ['id' => $id]);
+        //
     }
 
     /**
@@ -37,14 +36,13 @@ class PostController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->description = $request->input('description');
-        $post->view = '0';
-        $post->category_id = $id;
-        $post->save();
-        return redirect('post/'.$id);
+        $file = new File;
+        $file->post_id = $id;
+        $path = $request->file('file')->store('files');
+        $file->name = $request->name;
+        $file->url = '/'.$path;
+        $file->save();
+        return redirect('post_detail/'.$id);
     }
 
     /**
@@ -55,9 +53,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        $files = File::where('post_id', $id)->get();
-        return view('postdetail', ['post' => $post], ['files' => $files]);
+        //
     }
 
     /**
@@ -68,8 +64,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        return view('postupdate')->with(['post' => $post]);
+        //
     }
 
     /**
@@ -81,12 +76,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->description = $request->input('description');
-        $post->save();
-        return redirect('post/'.$post->category_id);
+        $file = File::find($id);
+        $post_id = $file->post_id;
+        $file->name = $request->name;
+        $file->save();
+        return redirect('post_detail/'.$post_id);
     }
 
     /**
@@ -97,8 +91,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return redirect('post/'.$post->category_id);
+        $file = File::find($id);
+        $post_id = $file->post_id;
+        $name = $file->url;
+        $file->delete();
+        Storage::delete($name);
+        return redirect('post_detail/'.$post_id);
     }
 }

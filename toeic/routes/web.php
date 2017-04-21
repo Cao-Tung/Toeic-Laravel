@@ -23,15 +23,39 @@ Route::post('post', 'PostController@store');
 
 Route::get('category', 'CategoryController@index');
 
+Route::get('post/{id}', 'PostController@index');
+
 Route::get('create_category', 'CategoryController@create');
+
+Route::get('create_post/{id}', 'PostController@create');
 
 Route::post('new_category', 'CategoryController@store');
 
+Route::post('new_post/{id}', 'PostController@store');
+
 Route::get('edit_category/{id}', 'CategoryController@edit');
+
+Route::get('edit_post/{id}', 'PostController@edit');
 
 Route::post('update_category/{id}', 'CategoryController@update');
 
+Route::post('update_post/{id}', 'PostController@update');
+
 Route::get('delete_category/{id}', 'CategoryController@destroy');
+
+Route::get('delete_post/{id}', 'PostController@destroy');
+
+Route::get('delete_file/{id}', 'FileController@destroy');
+
+Route::get('post_detail/{id}', 'PostController@show');
+
+Route::post('uploadfile/{id}', 'FileController@store');
+
+Route::post('updatefile/{id}', 'FileController@update');
+
+Route::post('newweb/{id}', 'WebController@store');
+
+Route::post('newcourse/{id}', 'CourseController@store');
 
 Route::get('create_post', function () {
     return view('postnew');

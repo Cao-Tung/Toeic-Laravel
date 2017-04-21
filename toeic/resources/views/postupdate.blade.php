@@ -9,18 +9,35 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Create Category</div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('new_category') }}">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('update_post/'.$post->id) }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group">
-                                    <label for="name" class="col-md-4 control-label">Name</label>
+                                    <label for="title" class="col-md-4 control-label">Title</label>
+
                                     <div class="col-md-6">
-                                        <textarea class="input-block-level summernote" id="name" name="name"></textarea>
+                                        <input id="title" type="text" class="form-control" name="title" value="{{ $post->title }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description" class="col-md-4 control-label">Description</label>
+
+                                    <div class="col-md-6">
+                                        <input id="description" type="text" class="form-control" name="description" value="{{ $post->description }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="content" class="col-md-4 control-label">Name</label>
+                                    <div class="col-md-6">
+                                        <textarea class="input-block-level summernote" id="content" name="content">{{ $post->content }}</textarea>
                                         <script>
-                                        $('#name').summernote();
+                                        $('#content').summernote();
                                         </script>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <button type="submit" class="btn btn-primary">
@@ -28,10 +45,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 

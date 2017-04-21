@@ -88,35 +88,11 @@
                 Laravel
             </div>
             
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('new_category') }}">
+           <form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-
-                <div class="form-group">
-                    <label for="name" class="col-md-4 control-label">Name</label>
-                    <div class="col-md-6">
-                        <textarea class="input-block-level summernote" id="name" name="name"></textarea >
-                            <script>
-                            $('#name').summernote();
-                            </script>
-
-                           <!--  <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-                            -->
-                            @if ($errors->has('name'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Register
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                <input type="file" name="file" />
+                <input type="submit">
+            </form>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>

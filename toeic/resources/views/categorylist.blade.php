@@ -14,13 +14,14 @@
                 <?php
                    foreach ($categories as $category) : ?>
                     <div class="form-group">
-                    <label for="name" class="col-md-2 control-label">Name</label>
+                    <label for="name" class="col-md-1 control-label">Name</label>
                     <div class="col-md-6">
                         <div>{!!html_entity_decode($category->name)!!}</div>
                         
                     </div>
                     <a class="col-md-1 btn btn-primary" href="{{ URL::to('edit_category/'.$category->id) }}">Update</a>
                     <a class="col-md-1 btn btn-primary"href="{{ URL::to('delete_category/'.$category->id) }}">Delete</a>
+                    <a class="col-md-1 btn btn-primary"href="{{ URL::to('post/'.$category->id) }}">Posts</a>
                 </div>
                 <?php endforeach
                 ?>

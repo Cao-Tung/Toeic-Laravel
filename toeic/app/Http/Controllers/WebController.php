@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
-use App\File;
-use Illuminate\Support\Facades\DB;
-class PostController extends Controller
+use App\Web;
+class WebController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $posts = Post::where('category_id', $id)->get();
-        return view('postlist', ['posts' => $posts], ['id' => $id]);
+        //
     }
 
     /**
@@ -24,9 +21,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        return view('postnew', ['id' => $id]);
+        //
     }
 
     /**
@@ -37,13 +34,12 @@ class PostController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->description = $request->input('description');
-        $post->view = '0';
-        $post->category_id = $id;
-        $post->save();
+        $web = new Web;
+        $web->name = $request->name;
+        $web->content = $request->content;
+        $web->url = $request->url;
+        $web->category_id = $id;
+        $web->save();
         return redirect('post/'.$id);
     }
 
@@ -55,9 +51,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        $files = File::where('post_id', $id)->get();
-        return view('postdetail', ['post' => $post], ['files' => $files]);
+        //
     }
 
     /**
@@ -68,8 +62,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        return view('postupdate')->with(['post' => $post]);
+        //
     }
 
     /**
@@ -81,12 +74,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->description = $request->input('description');
-        $post->save();
-        return redirect('post/'.$post->category_id);
+        //
     }
 
     /**
@@ -97,8 +85,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return redirect('post/'.$post->category_id);
+        //
     }
 }
