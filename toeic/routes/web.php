@@ -23,6 +23,8 @@ Route::post('post', 'PostController@store');
 
 Route::get('category', 'CategoryController@index');
 
+Route::get('weblist/{id}', 'WebController@index');
+
 Route::get('post/{id}', 'PostController@index');
 
 Route::get('create_category', 'CategoryController@create');
@@ -41,11 +43,23 @@ Route::post('update_category/{id}', 'CategoryController@update');
 
 Route::post('update_post/{id}', 'PostController@update');
 
+Route::post('update_web/{id}', 'WebController@update');
+
+Route::post('update_course/{id}', 'CourseController@update');
+
 Route::get('delete_category/{id}', 'CategoryController@destroy');
 
 Route::get('delete_post/{id}', 'PostController@destroy');
 
 Route::get('delete_file/{id}', 'FileController@destroy');
+
+Route::get('delete_web/{id}', 'WebController@destroy');
+
+Route::post('newcourse/{id}', 'CourseController@store');
+
+Route::get('manage_course_post/{id}', 'CourseController@show');
+
+Route::get('delete_course/{id}', 'CourseController@destroy');
 
 Route::get('post_detail/{id}', 'PostController@show');
 
@@ -54,6 +68,8 @@ Route::post('uploadfile/{id}', 'FileController@store');
 Route::post('updatefile/{id}', 'FileController@update');
 
 Route::post('newweb/{id}', 'WebController@store');
+
+Route::get('manage_web_post/{id}', 'WebController@show');
 
 Route::post('newcourse/{id}', 'CourseController@store');
 

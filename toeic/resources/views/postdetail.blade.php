@@ -3,11 +3,13 @@
 <script src="/library/bootstrap-3.3.5/bootstrap-3.3.5/dist/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="/library/summernote-0.8.3-dist/dist/summernote.css">
 <script src="/library/summernote-0.8.3-dist/dist/summernote.js"></script>
+<link rel="stylesheet" type="text/css" href="/library/Semantic-UI-CSS-master/semantic.css">
+<script src="/library/Semantic-UI-CSS-master/semantic.js"></script>
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+  <div class="ui grid">
+    <div>
       <div class="panel panel-default">
-        <div class="container">
+        <div>
 
           <?php
           foreach ($files as $file) : ?>
@@ -81,9 +83,6 @@
               </div>
             </div>
           </div>
-
-          
-
         </div>
         <div class="panel">
           <div class="panel-heading">Post {{$post->title}}</div>

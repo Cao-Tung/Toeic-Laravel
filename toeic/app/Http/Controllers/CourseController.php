@@ -53,7 +53,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $courses = Course::where('category_id', $id)->get();
+        return view('managecourse', ['courses' => $courses], ['id' => $id]);
     }
 
     /**
@@ -76,7 +77,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $course = Course::find($id);
+        $course->title = $request->title;
+        $course->content = $request->content;
+        $course->url = $request->url;
+        $course->source = $request->source;
+        $course->save();
+        return redirect('post/'.$course->category_id);
     }
 
     /**
@@ -87,6 +94,9 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+        $category_id = $course->category_id;
+        $course->delete();
+        return redirect('post/'.$category_id);
     }
 }

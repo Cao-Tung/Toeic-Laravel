@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\File;
+use App\Web;
+use App\Course;
 use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
@@ -16,7 +18,9 @@ class PostController extends Controller
     public function index($id)
     {
         $posts = Post::where('category_id', $id)->get();
-        return view('postlist', ['posts' => $posts], ['id' => $id]);
+        $webs = Web::where('category_id', $id)->get();
+        $courses = Course::where('category_id', $id)->get();
+        return view('adminpostlist', ['posts' => $posts, 'webs' => $webs, 'courses' => $courses], ['id' => $id]);
     }
 
     /**
