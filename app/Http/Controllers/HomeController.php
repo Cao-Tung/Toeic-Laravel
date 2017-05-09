@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\File;
+use App\Web;
+use App\Course;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -15,7 +21,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = DB::table('categories')->get();
+        $posts = DB::table('posts')->get();
+        return view('home', ['posts' => $posts, 'categories' => $categories]);
 //         return redirect('/home');
     }
 }

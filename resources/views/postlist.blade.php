@@ -17,7 +17,6 @@
                             <div class="col-md-6">
                                 <a href="{{ URL::to('post_detail/'.$post->id) }}">{!!html_entity_decode($post->title)!!}</a>
                             </div>
-                            
                         </div>
                         <?php endforeach
                         ?>
