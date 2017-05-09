@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('content');
             $table->string('description');
             $table->integer('view');
+            $table->string('avatar');
             $table->integer('category_id');
             $table->timestamps();
         });

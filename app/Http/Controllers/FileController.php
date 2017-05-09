@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\File;
+use App\Post;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -44,6 +45,7 @@ class FileController extends Controller
         $file->save();
         return redirect('post_detail/'.$id);
     }
+
 
     /**
      * Display the specified resource.

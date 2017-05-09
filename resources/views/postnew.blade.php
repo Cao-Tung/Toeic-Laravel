@@ -11,7 +11,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Create Category</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('new_post/'.$id) }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('new_post/'.$id) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group">
@@ -19,6 +19,14 @@
 
                                 <div class="col-md-6">
                                     <input id="title" type="text" class="form-control" name="title">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title" class="col-md-4 control-label">Avatar</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" name="file"/>
                                 </div>
                             </div>
 

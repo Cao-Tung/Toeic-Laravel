@@ -1,43 +1,36 @@
-<link rel="stylesheet" type="text/css" href="/library/bootstrap-3.3.5/bootstrap-3.3.5/dist/css/bootstrap.css">
-<script src="/library/jquery-3.2.1.min.js"></script>  
-<script src="/library/bootstrap-3.3.5/bootstrap-3.3.5/dist/js/bootstrap.js"></script>
-<link rel="stylesheet" type="text/css" href="/library/summernote-0.8.3-dist/dist/summernote.css">
-<script src="/library/summernote-0.8.3-dist/dist/summernote.js"></script>
-<link rel="stylesheet" type="text/css" href="/library/Semantic-UI-CSS-master/semantic.css">
-<script src="/library/Semantic-UI-CSS-master/semantic.js"></script>
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
   <div class="ui grid">
     <div class="twelve wide column">
       <div class="panel panel-default">
         <div class="panel-body form-horizontal">
           <div>Quản lý Course</div>
-          <!-- Web -->
+          <!-- Course -->
 
           <!-- Trigger the modal with a button -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#courseModal">Add new Web</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#courseModal">Add new Course</button>
           
-          <div class="row well ui raised segment ">
+          <div>
+            Danh sách các course,tìm kiếm,với admin có thể thêm,sửa xóa
+          </div>
+          <?php
+          foreach ($courses as $course) : ?>
+          <div class="form-group">
+            <label for="name" class="col-md-2 control-label">Title</label>
+            <div class="col-md-6">
+              <a href="{{$course->url}}">{!!html_entity_decode($course->title)!!}</a>
+            </div>
+            <a class="col-md-1 btn btn-primary" data-toggle="modal" data-target="#courseModal{{$course->id}}"">Manage</a>
+          </div>
+          <?php endforeach
+          ?>
+
+
+          <div>
             <div class="five wide column">
               <div class="ui-items">
-                <div class=" list-group-item  active"><h5 class="font-weight-bold text-center">Course</h5></div>
-                <?php
-                foreach ($courses as $course) : ?>
-                <a href="#" class="list-group-item" data-toggle="modal" data-target="#courseModal{{$course->id}}">
-                  <div class="ui items">
-                    <div class="item">
-                      <div class="ui top aligned">
-                        <i class="tags red icon"></i>
-                      </div>
-                      <div class="content">
-                        <div class="description">
-                          <p>{!!html_entity_decode($course->title)!!}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <?php endforeach
-                ?>
                 @foreach ($courses as $course)    
                 <div class="modal fade" id="courseModal{{$course->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
@@ -87,7 +80,7 @@
             </div>
           </div>
 
-          <div class="modal fade" id="webModal" role="dialog">
+          <div class="modal fade" id="courseModal" role="dialog">
             <div class="modal-dialog">
 
               <!-- Modal content-->
@@ -117,6 +110,12 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="source" class="col-md-4 control-label">Source</label>
+                    <div class="col-md-6">
+                      <input id="source" type="text" class="form-control" name="source">
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
                       <button type="submit" class="btn btn-primary">
                         Create
@@ -135,3 +134,4 @@
     </div>
   </div>
 </div>
+@endsection

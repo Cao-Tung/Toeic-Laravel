@@ -6,7 +6,7 @@
             <div class="twelve wide column">
                 <div class="panel panel-default">
                     <div class="panel-body form-horizontal">
-                        <div>Quản lý các chủ đề</div>
+                        <div>Quản lý các bài viết</div>
                         <div>
                             Danh sách các bài viết,tìm kiếm,với admin có thể thêm,sửa xóa
                         </div>
@@ -17,9 +17,7 @@
                             <div class="col-md-6">
                                 <a href="{{ URL::to('post_detail/'.$post->id) }}">{!!html_entity_decode($post->title)!!}</a>
                             </div>
-                            <a class="col-md-1 btn btn-primary" href="{{ URL::to('edit_post/'.$post->id) }}">Update</a>
-                            <a class="col-md-1 btn btn-primary"
-                               href="{{ URL::to('delete_post/'.$post->id) }}">Delete</a>
+                            
                         </div>
                         <?php endforeach
                         ?>
@@ -27,8 +25,8 @@
                 </div>
             </div>
             <div class="four wide column">
-                <div class="row well ui raised segment ">
-                    <div class="five wide column">
+                <div class="">
+                    <div>
                         <div class="ui-items">
                             <div class=" list-group-item  active"><h5 class="font-weight-bold text-center">Web</h5>
                             </div>
@@ -43,10 +41,7 @@
                                         <div class="content">
                                             <div class="description">
                                                 <p>{!!html_entity_decode($web->name)!!}</p>
-                                                <p>
-                                                    <small class="text-muted">View</small>
-                                                </p>
-                                                <small class="text-muted">date</small>
+                                                
                                             </div>
                                         </div>
                                     </div>
