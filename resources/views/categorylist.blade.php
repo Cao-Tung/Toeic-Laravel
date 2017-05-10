@@ -25,7 +25,11 @@
                                 <td>
                                     <a class="btn btn-default" href="{{ URL::to('edit_category/'.$category->id) }}">Update</a>
                                     <a class="btn btn-danger" href="{{ URL::to('delete_category/'.$category->id) }}">Delete</a>
+                                    @if (Auth::check())
+                                    <a class="btn btn-success" href="{{ URL::to('adminpost/'.$category->id) }}">Posts</a>
+                                    @else
                                     <a class="btn btn-success" href="{{ URL::to('post/'.$category->id) }}">Posts</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
