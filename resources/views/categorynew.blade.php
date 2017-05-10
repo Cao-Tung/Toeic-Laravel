@@ -1,3 +1,7 @@
+<script src="/library/jquery-3.2.1.min.js"></script>
+<script src="/library/bootstrap-3.3.5/bootstrap-3.3.5/dist/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="/library/summernote-0.8.3-dist/dist/summernote.css">
+<script src="/library/summernote-0.8.3-dist/dist/summernote.js"></script>
 @extends('layouts.app')
 
 @section('content')

@@ -1,15 +1,15 @@
-
-@extends('layouts.app')
 <script src="/library/jquery-3.2.1.min.js"></script>
 <script src="/library/bootstrap-3.3.5/bootstrap-3.3.5/dist/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="/library/summernote-0.8.3-dist/dist/summernote.css">
 <script src="/library/summernote-0.8.3-dist/dist/summernote.js"></script>
+@extends('layouts.app')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create Category</div>
+                    <div class="panel-heading">Create Post</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('new_post/'.$id) }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
