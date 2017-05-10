@@ -1,80 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- content -->
     <div class="container">
-        <div class="ui grid">
-            <div class="twelve wide column">
-                <div class="panel panel-default">
-                    <div class="panel-body form-horizontal">
-                        <div>Quản lý các bài viết</div>
-                        <div>
-                            Danh sách các bài viết,tìm kiếm,với admin có thể thêm,sửa xóa
-                        </div>
-                        <?php
-                        foreach ($posts as $post) : ?>
-                        <div class="form-group">
-                            <label for="name" class="col-md-2 control-label">Name</label>
-                            <div class="col-md-6">
-                                <a href="{{ URL::to('post_detail/'.$post->id) }}">{!!html_entity_decode($post->title)!!}</a>
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="blog-post">
+                    @foreach ($posts as $post)
+                        <div class="panel">
+                            <div>
+                                <img src="{{ $post->avatar }}" class="img-full">
                             </div>
-                        </div>
-                        <?php endforeach
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="four wide column">
-                <div class="">
-                    <div>
-                        <div class="ui-items">
-                            <div class=" list-group-item  active"><h5 class="font-weight-bold text-center">Web</h5>
-                            </div>
-                            <?php
-                            foreach ($webs as $web) : ?>
-                            <a href="#" class="list-group-item">
-                                <div class="ui items">
-                                    <div class="item">
-                                        <div class="ui top aligned">
-                                            <i class="tags red icon"></i>
-                                        </div>
-                                        <div class="content">
-                                            <div class="description">
-                                                <p>{!!html_entity_decode($web->name)!!}</p>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="wrapper-lg">
+                                <h2 class="m-t-none"><a
+                                            href="{{ URL::to('post_detail/'.$post->id) }}">{!!html_entity_decode($post->title)!!}</a>
+                                </h2>
+                                <div>
+                                    {!!html_entity_decode($post->description)!!}
                                 </div>
-                            </a>
-                            <?php endforeach
-                            ?>
+                                <div class="line line-lg b-b b-light"></div>
+                                <div class="text-muted">
+                                    <i class="fa fa-user text-muted"></i> by <a href class="m-r-sm">Admin</a>
+                                    <i class="fa fa-clock-o text-muted"></i> {{ $post->updated_at }}
+                                    <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> 2 comments</a>
+                                </div>
+                            </div>
                         </div>
+                    @endforeach
 
-                        <!-- Edit Course -->
-                        <div class="ui-items ui raised segment ">
-                            <div class=" list-group-item  active"><h5 class="font-weight-bold text-center">Course</h5>
-                            </div>
-                            <?php
-                            foreach ($courses as $course) : ?>
-                            <a href="#" class="list-group-item">
-                                <div class="ui items">
-                                    <div class="item">
-                                        <div class="ui top aligned">
-                                            <i class="tags red icon"></i>
-                                        </div>
-                                        <div class="content">
-                                            <div class="description">
-                                                <p>{!!html_entity_decode($course->title)!!}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <?php endforeach
-                            ?>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <div class="col-sm-3">
+                <h5 class="font-bold">Courses</h5>
+                <ul class="list-group">
+                    @foreach ($courses as $item)
+                        <li class="list-group-item">
+                            <a href>
+                                {!!html_entity_decode($item->title)!!}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                <h5 class="font-bold">Webs</h5>
+                <div>
+                    @foreach ($webs as $item)
+                        <div>
+                            <a class="pull-left thumb thumb-wrapper m-r">
+                                <img src="{{ $post->avatar }}">
+                            </a>
+                            <div class="clear">
+                                <a href
+                                   class="font-semibold text-ellipsis">{!!html_entity_decode($item->name)!!}</a>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
 @endsection
 
