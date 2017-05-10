@@ -1,3 +1,11 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @extends('layouts.app')
 
 @section('content')
@@ -10,6 +18,7 @@
                     <div>
                         <img src="{{ $post->avatar }}" class="img-full">
                     </div>
+                    <div class="fb-like" data-href="https://www.facebook.com/Du-L%E1%BB%8Bch-Xanh-176457449523977/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
                     <div class="wrapper-lg">
                         <h2 class="m-t-none"><a
                             href="{{ URL::to('post_detail/'.$post->id) }}">{!!html_entity_decode($post->title)!!}</a>
@@ -27,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3 panel">
             <h5 class="font-bold">Recent Posts</h5>
             <div>
                 @foreach ($posts as $item)
@@ -45,7 +54,7 @@
                    @endforeach
                </div>
            </div>
-           <div class="col-sm-3">
+           <div class="col-sm-3 panel">
             <h5 class="font-bold">Files</h5>
             @if (Auth::check())
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#fileModal">
@@ -123,6 +132,7 @@
   </div>
 </div>
 </div>
+<div class="fb-comments" data-href="http://localhost:8080/#/toeic/detail/{{$post->id}}" data-numposts="5"></div>
 </div>
 
 @endsection

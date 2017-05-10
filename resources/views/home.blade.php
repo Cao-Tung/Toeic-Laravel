@@ -1,4 +1,11 @@
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @extends('layouts.app')
 
 @section('content')
@@ -8,9 +15,9 @@
     <div class="row">
         <div class="col-sm-9">
             <div class="blog-post">
+<div class="fb-like" data-href="https://www.facebook.com/Du-L%E1%BB%8Bch-Xanh-176457449523977/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
                 @foreach ($posts as $post)
                 <div class="panel">
-
                     <div class="wrapper-lg">
                         <h2 class="m-t-none"><a href="{{ URL::to('post_detail/'.$post->id) }}">{!!html_entity_decode($post->title)!!}</a>
                         </h2>
@@ -42,6 +49,9 @@
         </div>
         <div class="col-sm-3 panel">
             <h3 class="font-bold widget-title">Categories</h3>
+            @if (Auth::check())
+            <a class="btn btn-success" href="{{ URL::to('category') }}">Manage</a>
+            @endif
             <ul class="list-group">
                 @foreach ($categories as $category)
                 <li class="list-group-item">
@@ -53,9 +63,9 @@
                 @endforeach
             </ul>
             <div class="tags m-b-lg l-h-2x">
-                <a href class="label bg-primary">Bootstrap</a> <a href class="label bg-primary">Application</a>
-                <a href class="label bg-primary">Apple</a> <a href class="label bg-primary">Less</a> <a
-                href class="label bg-primary">Theme</a> <a href class="label bg-primary">Laravel</a>
+                <a href class="label bg-primary">Home</a> <a href class="label bg-primary">Toeic</a>
+                <a href class="label bg-primary">Laravel</a> <a href class="label bg-primary">Toeic 450+</a> <a
+                href class="label bg-primary">Toeic 600+</a>
             </div>
         </div>
         <div class="col-sm-3 panel">
@@ -77,6 +87,7 @@
                </div>
            </div>
        </div>
+       <div class="fb-comments" data-href="http://localhost:8080/#/toeic/detail/{{$post->id}}" data-numposts="5"></div>
    </div>
 
    <!-- /content -->
