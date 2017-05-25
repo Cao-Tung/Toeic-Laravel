@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 @endforeach
-
+                <div style="margin : auto; width : 30%;">{{ $posts->links() }}</div>
             </div>
         </div>
         <div class="col-sm-3 panel">
@@ -62,24 +62,24 @@
                 </li>
                 @endforeach
             </ul>
-            <div class="tags m-b-lg l-h-2x">
+            <!-- <div class="tags m-b-lg l-h-2x">
                 <a href class="label bg-primary">Home</a> <a href class="label bg-primary">Toeic</a>
                 <a href class="label bg-primary">Laravel</a> <a href class="label bg-primary">Toeic 450+</a> <a
                 href class="label bg-primary">Toeic 600+</a>
-            </div>
+            </div> -->
         </div>
         <div class="col-sm-3 panel">
             <h5 class="font-bold">Recent Posts</h5>
             <div>
-                @foreach ($posts as $post)
+                @foreach ($postsnew as $postnew)
                 <div>
                     <a class="pull-left thumb thumb-wrapper m-r">
-                        <img src="{{ $post->avatar }}">
+                        <img src="{{ $postnew->avatar }}">
                     </a>
                     <div class="clear">
-                        <a href="{{ URL::to('post_detail/'.$post->id) }}"
-                           class="font-semibold text-ellipsis">{!!html_entity_decode($post->title)!!}</a>
-                           <div class="text-xs block m-t-xs"><a href>English</a> {{ $post->updated_at }}</div>
+                        <a href="{{ URL::to('post_detail/'.$postnew->id) }}"
+                           class="font-semibold text-ellipsis">{!!html_entity_decode($postnew->title)!!}</a>
+                           <div class="text-xs block m-t-xs"><a href>English</a> {{ $postnew->updated_at }}</div>
                        </div>
                    </div>
                    <div class="line"></div>
@@ -87,7 +87,7 @@
                </div>
            </div>
        </div>
-       <div class="fb-comments" data-href="http://localhost:8080/#/toeic/detail/{{$post->id}}" data-numposts="5"></div>
+       <div class="fb-comments" data-href="http://localhost:8080/#/toeic/detail/{{$postnew->id}}" data-numposts="5"></div>
    </div>
 
    <!-- /content -->

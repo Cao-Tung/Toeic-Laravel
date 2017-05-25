@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Danh sách các bài viết,tìm kiếm,với admin có thể thêm,sửa xóa</div>
+                    <div class="panel-heading">Danh sách các bài viết trong chủ đề </div>
 
                     <table class="table table-striped m-b-none">
                         <thead>

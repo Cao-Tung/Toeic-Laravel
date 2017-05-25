@@ -6,7 +6,7 @@
             <div class="twelve wide column">
                 <div class="panel panel-default">
                     <div class="panel-body form-horizontal">
-                        <h1>Quản lý các bài viết</h1>
+                        <h1>Quản lý các bài viết trong chủ đề</h1>
                         <hr>
                         <a class="btn btn-default" href="{{ URL::to('create_post/'.$id) }}">Create New</a>
                         <a class="btn btn-danger" href="{{ URL::to('manage_web_post/'.$id) }}">Web</a>

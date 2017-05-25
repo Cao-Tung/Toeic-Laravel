@@ -22,8 +22,9 @@ class HomeController extends Controller
     public function index()
     {
         $categories = DB::table('categories')->get();
-        $posts = DB::table('posts')->get();
-        return view('home', ['posts' => $posts, 'categories' => $categories]);
+        $posts = DB::table('posts')->paginate(5);
+        $postsnew = DB::table('posts')->paginate(5);
+        return view('home', ['posts' => $posts, 'categories' => $categories, 'postsnew' => $postsnew]);
 //         return redirect('/home');
     }
 }

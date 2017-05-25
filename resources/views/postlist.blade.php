@@ -35,7 +35,7 @@
                     </div>
                 </div>
                     @endforeach
-
+                <div style="margin : auto; width : 30%;">{{ $posts->links() }}</div>
                 </div>
             </div>
             <div class="col-sm-3 panel">
@@ -44,7 +44,7 @@
                     @foreach ($courses as $item)
                         <li class="list-group-item">
                             <a href>
-                                {!!html_entity_decode($item->title)!!}
+                                <font color="red">{!!html_entity_decode($item->title)!!}</font>
                             </a>
                         </li>
                     @endforeach
@@ -60,7 +60,7 @@
                             </a>
                             <div class="clear">
                                 <a href="{{$item->url}}"
-                                   class="font-semibold text-ellipsis">{!!html_entity_decode($item->name)!!}</a>
+                                   class="font-semibold text-ellipsis"><font color="red">{!!html_entity_decode($item->name)!!}</font></a>
                             </div>
                         </div>
                         <div class="line"></div>

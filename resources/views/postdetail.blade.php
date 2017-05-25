@@ -30,7 +30,7 @@
                         <div class="text-muted">
                             <i class="fa fa-user text-muted"></i> by <a href class="m-r-sm">Admin</a>
                             <i class="fa fa-clock-o text-muted"></i> {{ $post->updated_at }}
-                            <a href class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> 2 comments</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
             <div>
                 @foreach ($files as $file)
                 <div class="form-group">
-                    <a class="clear" href="{{ $file->url }}">{{ $file->name }}</a>
+                    <a class="clear" href="{{ $file->url }}"><font color="red">{{ $file->name }}</font><i class="attach icon"></i></a>
                     @if (Auth::check())
                     <button type="button" class="ui primary button" data-toggle="modal" data-target="#updateFileModal">Update</button>
                     <a class="ui primary button" href="{{ URL::to('delete_file/'.$file->id) }}">Delete</a>

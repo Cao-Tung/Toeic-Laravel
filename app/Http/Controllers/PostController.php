@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function user($id)
     {
-        $posts = Post::where('category_id', $id)->get();
+        $posts = Post::where('category_id', $id)->paginate(5);
         $webs = Web::where('category_id', $id)->get();
         $courses = Course::where('category_id', $id)->get();
         return view('postlist', ['posts' => $posts, 'webs' => $webs, 'courses' => $courses], ['id' => $id]);
